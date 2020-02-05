@@ -1,9 +1,15 @@
 // INITIALIZATION
+// data recovery
 const mockDb = require('./data');
+// global variable initialization
 const res = [];
 let country = '';
 
 // FUNCTIONS
+/*
+    BeautifulResult, take one parameter data with pattern country-people-animals. 
+        display this data in console.
+*/
 function beautifyResult(data) {
     console.log('[');
     let first;
@@ -33,6 +39,10 @@ function beautifyResult(data) {
     console.log('] ');
 }
 
+/*
+    recursiveFilter, take two parameter filter a string and data with pattern country-people-animals. 
+        filters the animals of this data to keep only those whose name contains the filter.
+*/
 function recursiveFilter(filtre, data) {
     data.forEach(element => {
         let key = Object.keys(element)[1];
@@ -49,6 +59,11 @@ function recursiveFilter(filtre, data) {
     return res;
 }
 
+
+/*
+    recursiveFilter, take two parameter filter a data with pattern country-people-animals. 
+        Count the number of children and write it in the name of the element.
+*/
 function recursiveCount(data) {
     data.forEach(element => {
         let key = Object.keys(element)[1];
@@ -65,6 +80,10 @@ function recursiveCount(data) {
 }
 
 // CORE APPLICATION
+/*
+    main, take one parameter, the argument of command line.. 
+        executes the different functions according to the arguments retrieved from the command line.
+*/
 function main(arg) {
     let res;
     if(arg.split('=')[0] === '--filter') {
@@ -81,4 +100,5 @@ function main(arg) {
     }
 }
 
+// application execution
 main(process.argv[2]);
